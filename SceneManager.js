@@ -61,8 +61,13 @@ class SceneManager
   }
   render()
   {
-    
+
     this.currentScene.render();
+  }
+
+  getScene()
+  {
+    return this.sceneTitles[this.index];
   }
 
 
