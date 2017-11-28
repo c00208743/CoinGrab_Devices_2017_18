@@ -2,12 +2,34 @@
  * main is the entry point for Javascript programs.
  *
  */
-class TitleScene extends Scene
+class TitleScene
 {
   constructor(title)
   {
-    super(title);
+    this.title = title;
+    this.createImg("img");
+
   }
 
+   createImg(img)
+  {
+  	var img = document.createElement("img");
+  	img.id = img;  
+    img.innerHTML = '<img src=\'Untitled.png\'>';
+    img.addEventListener("touchstart", onTouchStart,false);
+    document.body.appendChild(img);
+
+  }
+
+  render()
+  {
+    var canvas = document.getElementById('mycanvas');
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+    ctx.font = 'Impact Regular';
+    ctx.fillText(this.title, 10, 50);
+    document.body.style.backgroundColor = "#ff0000";
+
+  }
 
 }

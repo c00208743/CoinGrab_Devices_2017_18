@@ -56,12 +56,25 @@ class SceneManager
     {
       this.index = 0;
     }
+    if(this.index == 1)
+    {
+      //removes the button
+      var el = document.getElementById('divId');
+      el.parentNode.removeChild(divId);
+    }
+
+    if(this.index == 1)
+    {
+      //removes the img
+      var le = document.getElementById('img');
+      le.parentNode.removeChild(img);
+    }
     this.currentScene = this.scenes[this.index];
 
   }
   render()
   {
-    
+
     this.currentScene.render();
   }
 

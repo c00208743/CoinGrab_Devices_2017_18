@@ -2,11 +2,11 @@
  * main is the entry point for Javascript programs.
  *
  */
-class GameScene extends Scene
+class GameScene
 {
   constructor(title)
   {
-    super(title);
+    this.title = title;
   }
   /**
    * The Render method creates a background with a hex value

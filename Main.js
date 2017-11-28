@@ -19,8 +19,8 @@ function main()
   sceneManager.addScene(gameScene);
   sceneManager.addScene(endScene);
   sceneManager.goToScene('Title Screen');
-  document.addEventListener("touchstart", clickHandler.bind(null, sceneManager));
-//  document.addEventListener("click", clickHandler.bind(null, sceneManager));
+
+
   draw(sceneManager);
 }
 
@@ -45,9 +45,11 @@ function initCanvas()
  *the methods goToScene and render in the sceneManager are called
  */
 
-function clickHandler (sceneManager, e)
+function onTouchStart(e)
 {
    sceneManager.goToNextScene();	// Use a method on the sceneManager
+
+
    sceneManager.render();
 }
 
