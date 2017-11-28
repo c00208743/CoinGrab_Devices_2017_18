@@ -7,30 +7,61 @@ var gameNS = {};
 
 function main()
 {
+
+  initCanvas();
+
   var game;
+
   var titleScene = new TitleScene('Title Screen');
   var menuScene = new MenuScene('Menu Screen');
   var gameScene = new GameScene('Game Screen');
   var endScene = new EndScene('End Screen');
    sceneManager = new SceneManager();
-  initCanvas();
   sceneManager.addScene(titleScene);
   sceneManager.addScene(menuScene);
   sceneManager.addScene(gameScene);
   sceneManager.addScene(endScene);
   sceneManager.goToScene('Title Screen');
   document.addEventListener("touchstart", clickHandler.bind(null, sceneManager));
+  document.addEventListener("touchstart", onTouchStart);
+  document.addEventListener("touchmove", onTouchMove, {passive: false});
+  document.addEventListener("touchend", onTouchEnd);
 
   game = new Game();
-
   gameNS.game = game;
-
   game.init();
-  game.update(sceneManager);
-  game.render(sceneManager);
 
 //  document.addEventListener("click", clickHandler.bind(null, sceneManager));
-  draw(sceneManager);
+  update();
+}
+
+/**
+* Function that gets the position where the screen was first touched.
+* @param {Event} e Used to handle event variables.
+*/
+function onTouchStart(e)
+{
+  gameNS.game.player.touchStart(e);
+}
+
+/**
+ * Function that gets the position where the screen was currently being touched.
+ * Draws a line from its current position to its previous position.
+ * @param {Event} e Used to handle event variables.
+ */
+function onTouchMove(e)
+{
+  gameNS.game.player.touchMove(e);
+}
+
+/**
+* Function that gets the position where the screen was last being touched.
+* If a swipe is detected the screen will clear.
+* @param {Event} e Used to handle event variables.
+*/
+function onTouchEnd(e)
+{
+  gameNS.game.player.touchEnd(e);
 }
 
 function initCanvas()
@@ -54,20 +85,13 @@ function initCanvas()
  *the methods goToScene and render in the sceneManager are called
  */
 
-function clickHandler (sceneManager, e)
+function clickHandler ( e)
 {
-
-
-   if(sceneManager.getScene() === "Game Screen")
-   {
-     gameNS.game.update(sceneManager);
-   }
-   else
-   {
-     sceneManager.goToNextScene();	// Use a method on the sceneManager
-     draw(sceneManager);
-   }
-
+  if(sceneManager.getScene() != "Game Screen")
+  {
+    sceneManager.goToNextScene();	// Use a method on the sceneManager
+  }
+  console.log("Click");
 }
 
 
@@ -77,17 +101,26 @@ function clickHandler (sceneManager, e)
  *the render in the sceneManager are called
  * Ross said this would become unessary try take it out
  */
-function draw(sceneManager)
+function draw()
 {
   sceneManager.render();
 }
 
-function update(sceneManager)
+function update()
 {
+  draw();
+
   if(sceneManager.getScene() === "Game Screen")
   {
     gameNS.game.update(sceneManager);
   }
+
+  //if (sceneManager) {
+  //      return;
+  //  }
+
+
+  window.requestAnimationFrame(update);
 }
 
 /**

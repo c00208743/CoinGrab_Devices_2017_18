@@ -24,19 +24,23 @@ Game.prototype.init = function()
     console.log('Initialising game');
 }
 
-Game.prototype.render = function(sceneManager)
-{
-  sceneManager.render();
-  this.player.render();
-}
 
 Game.prototype.update = function(sceneManager)
 {
+  //console.log("update")
   this.render(sceneManager);
+  this.player.update();
 
-  if (sceneManager) {
-        return;
-    }
 
-  window.requestAnimationFrame(gameNS.game.update(sceneManager));
+  //if (sceneManager) {
+  //      return;
+  //  }
+
+
+
+}
+
+Game.prototype.render = function()
+{
+  this.player.render();
 }
