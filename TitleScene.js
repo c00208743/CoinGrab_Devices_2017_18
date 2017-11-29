@@ -7,19 +7,19 @@ class TitleScene
   constructor(title)
   {
     this.title = title;
-    this.createImg("img");
-
+    this.createDiv3("divId3");
   }
 
-   createImg(img)
+  createDiv3(divId3)
   {
-  	var img = document.createElement("img");
-  	img.id = img;  
-    img.innerHTML = '<img src=\'Untitled.png\'>';
-    img.addEventListener("touchstart", onTouchStart,false);
-    document.body.appendChild(img);
+
+  	var div3 = document.createElement("div");
+    div3.innerHTML = '<img src=\'Untitled.png\'>';
+  	div3.id = divId3;
+  	document.body.appendChild(div3);
 
   }
+
 
   render()
   {

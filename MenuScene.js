@@ -8,6 +8,7 @@ class MenuScene
   {
     this.title = title;
     this.createDiv("divId");
+    this.createDiv2("divId2");
 
   }
 
@@ -16,10 +17,22 @@ class MenuScene
   {
   	var div = document.createElement("div");
   	div.id = divId;
+    div.innerHTML = '<img src=\'Play.png\'>';
     div.addEventListener("touchstart", onTouchStart,false);
     document.body.appendChild(div);
+  }
+
+  createDiv2(divId2)
+  {
+
+  	var div2 = document.createElement("div");
+    div2.innerHTML = '<img src=\'Quit.png\'>';
+  	div2.id = divId2;
+  	div2.addEventListener("touchstart", onTouchStart,false);
+    document.body.appendChild(div2);
 
   }
+
 
   /**
    * The Render method creates a background with a hex value
@@ -34,8 +47,6 @@ class MenuScene
     ctx.font = 'Impact Regular';
     ctx.fillText(this.title, 10, 50);
     document.body.style.backgroundColor = "#0000ff";
-
-
 
   }
 
