@@ -136,9 +136,9 @@ update()
     this.x -= 5;
   }
 
-  if(this.y > 500)
+  if(this.y > 700)
   {
-    this.y = 500;
+    this.y = 700;
     this.jumping = false;
   }
   else

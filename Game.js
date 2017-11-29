@@ -5,8 +5,20 @@
 
 function Game()
 {
+  this.img = new Image();
+  this.img.src = 'Images/coin.png';
+
+  var canvas = document.getElementById('mycanvas');
+  var ctx = canvas.getContext('2d');
+
+  this.coin = new Coin(ctx, {
+    width: 1000,
+    height: 100,
+    image: this.img
+  }, 10)
+
   var x = 100;
-  var y = 500;
+  var y = 700;
   var width = 50;
   var height = 50;
   var r = 255;
@@ -17,11 +29,14 @@ function Game()
 
 
   this.update = this.update.bind(this);
+
+
 }
 
 Game.prototype.init = function()
 {
     console.log('Initialising game');
+    this.previousTime = Date.now();
 }
 
 
@@ -31,10 +46,11 @@ Game.prototype.update = function(sceneManager)
   this.render(sceneManager);
   this.player.update();
 
+  var now = Date.now();
+  var deltaTime = (now - this.previousTime)
+  this.previousTime = now;
 
-  //if (sceneManager) {
-  //      return;
-  //  }
+  this.coin.update(deltaTime);
 
 
 
