@@ -99,9 +99,10 @@ touchEnd(e)
     this.move = false;
     this.touchX = this.x + (this.width / 2);
 
-    var aboveTime = 0;
-    var belowTime = 150;
-    var maxDistance = 500;
+    var aboveTime = 20;
+    var belowTime = 300;
+    var minDist = 50;
+    var maxDist = 700;
 
     var time2 = new Date();
     var timeTaken = time2 - this.time1;
@@ -114,11 +115,13 @@ touchEnd(e)
     var dist = (a * a) + (b * b);
     dist = Math.sqrt(dist);
 
-    if(!this.jumping && aboveTime < timeTaken && belowTime > timeTaken && dist < maxDistance)
+    console.log(timeTaken);
+    console.log(dist)
+    if(this.jumping == false && aboveTime < timeTaken && belowTime > timeTaken && dist > minDist && dist < maxDist)
     {
       this.applyForceY(this.jumpForce);
-      this.jumping = true;
       console.log("Swipe");
+      this.jumping = true;
     }
 }
 
@@ -136,9 +139,11 @@ update()
     this.x -= 5;
   }
 
-  if(this.y > 700)
+  if(this.y >= 700)
   {
+    console.log(this.y);
     this.y = 700;
+    this.velocityY = 0;
     this.jumping = false;
   }
   else
@@ -146,9 +151,21 @@ update()
     this.applyForceY(this.gravity);
   }
 
+
+
+  if(this.y < 0)
+  {
+    this.y = 0;
+
+  }
+
+
+
   this.velocityY = this.velocityY + this.accelY;
   this.y = this.y + this.velocityY;
   this.accelY = 0;
+  //this.velocityY = 0;
+
 }
 
   /**
