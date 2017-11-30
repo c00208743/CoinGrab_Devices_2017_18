@@ -30,6 +30,13 @@ class Coin
 
   }
 
+
+  hit()
+  {
+      this.y = -25;
+      this.x = Math.floor(Math.random() * 450);
+  }
+
   /**
     *   Update loop
     *   @param {int} deltaTime  The amount of time that has passed since the last frame

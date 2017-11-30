@@ -52,7 +52,10 @@ Game.prototype.update = function(sceneManager)
 
   this.coin.update(deltaTime);
 
-
+  if(this.player.x + this.player.width > this.coin.x && this.player.x < this.coin.x + this.coin.width)
+  {
+    console.log("collision");
+  }
 
 }
 
