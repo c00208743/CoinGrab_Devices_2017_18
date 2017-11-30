@@ -54,7 +54,10 @@ Game.prototype.update = function(sceneManager)
 
   if(this.player.x + this.player.width > this.coin.x && this.player.x < this.coin.x + this.coin.width)
   {
-    console.log("collision");
+    if(this.player.y + this.player.height > this.coin.y && this.player.y < this.coin.y + this.coin.height)
+    {
+      console.log("collision");
+    }
   }
 
 }
