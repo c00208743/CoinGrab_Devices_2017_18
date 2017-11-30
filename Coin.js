@@ -16,6 +16,7 @@ class Coin
   {
     this.fps = fps;
     this.width = imageOptions.width;
+    console.log(this.width);
 	  this.height = imageOptions.height;
 	  this.image = imageOptions.image;
     this.ctx = context;

@@ -52,11 +52,11 @@ Game.prototype.update = function(sceneManager)
 
   this.coin.update(deltaTime);
 
-  if(this.player.x + this.player.width > this.coin.x && this.player.x < this.coin.x + this.coin.width)
+  if(this.player.x + this.player.width > this.coin.x && this.player.x < this.coin.x + this.coin.width / 40)
   {
-    if(this.player.y + this.player.height > this.coin.y && this.player.y < this.coin.y + this.coin.height)
+    if(this.player.y + this.player.height / 2 > this.coin.y && this.player.y < this.coin.y + this.coin.height / 3)
     {
-      console.log("collision");
+      this.coin.hit();
     }
   }
 
