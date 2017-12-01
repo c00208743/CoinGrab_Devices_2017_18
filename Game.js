@@ -57,6 +57,7 @@ Game.prototype.update = function(sceneManager)
     if(this.player.y + this.player.height / 2 > this.coin.y && this.player.y < this.coin.y + this.coin.height / 3)
     {
       this.coin.hit();
+      this.player.hitCoin();
     }
   }
 

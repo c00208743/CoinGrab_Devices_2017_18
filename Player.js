@@ -37,6 +37,7 @@ class Player
    this.gravity = 0.1 * this.mass;
    this.jumpForce = -5 * this.mass;
    this.jumping = false;
+   this.score = 0;
 
   }
 
@@ -115,14 +116,17 @@ touchEnd(e)
     var dist = (a * a) + (b * b);
     dist = Math.sqrt(dist);
 
-    console.log(timeTaken);
-    console.log(dist)
-    if(this.jumping == false && aboveTime < timeTaken && belowTime > timeTaken && dist > minDist && dist < maxDist)
+    if(sceneManager.getScene() === "Game Screen" && this.jumping == false && aboveTime < timeTaken && belowTime > timeTaken && dist > minDist && dist < maxDist)
     {
       this.applyForceY(this.jumpForce);
-      console.log("Swipe");
       this.jumping = true;
     }
+}
+
+hitCoin()
+{
+  this.score++;
+  console.log(this.score);
 }
 
 update()
@@ -141,7 +145,6 @@ update()
 
   if(this.y >= 700)
   {
-    console.log(this.y);
     this.y = 700;
     this.velocityY = 0;
     this.jumping = false;

@@ -84,7 +84,6 @@ function initCanvas()
 }
 /**
  * The clickHandler is called when a native click event is fired
- * @param {Class} sceneManager passes access to the sceneManager
  *the methods goToScene and render in the sceneManager are called
  */
 
@@ -94,7 +93,6 @@ function clickHandler ( e)
   {
     sceneManager.goToNextScene();	// Use a method on the sceneManager
   }
-  console.log("Click");
 }
 
 
