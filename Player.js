@@ -126,7 +126,7 @@ touchEnd(e)
 hitCoin()
 {
   this.score++;
-  console.log(this.score);
+  //console.log(this.score);
 }
 
 update()

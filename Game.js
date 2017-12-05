@@ -27,6 +27,7 @@ function Game()
   var colour = [r, g, b];
   this.player = new Player(x, y, width, height, colour);
 
+  this.timer = 60;
 
   this.update = this.update.bind(this);
 
@@ -35,10 +36,13 @@ function Game()
 
 Game.prototype.init = function()
 {
-    console.log('Initialising game');
     this.previousTime = Date.now();
 }
 
+Game.prototype.restart = function()
+{
+  this.timer = 60;
+}
 
 Game.prototype.update = function(sceneManager)
 {
@@ -48,6 +52,8 @@ Game.prototype.update = function(sceneManager)
 
   var now = Date.now();
   var deltaTime = (now - this.previousTime)
+  this.timer -= deltaTime / 1000;
+  console.log(this.timer);
   this.previousTime = now;
 
   this.coin.update(deltaTime);
