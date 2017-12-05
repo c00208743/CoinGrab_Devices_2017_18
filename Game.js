@@ -53,7 +53,6 @@ Game.prototype.update = function(sceneManager)
   var now = Date.now();
   var deltaTime = (now - this.previousTime)
   this.timer -= deltaTime / 1000;
-  console.log(this.timer);
   this.previousTime = now;
 
   this.coin.update(deltaTime);
@@ -71,5 +70,12 @@ Game.prototype.update = function(sceneManager)
 
 Game.prototype.render = function()
 {
+  var canvas = document.getElementById('mycanvas');
+  var ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0, canvas.width, canvas.height);
+  ctx.font = '40pt Impact Regular';
+  ctx.fillStyle = 'black';
+  ctx.fillText(Math.round(this.timer), 400, 70);
+
   this.player.render();
 }
