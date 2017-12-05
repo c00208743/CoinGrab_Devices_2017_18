@@ -89,9 +89,20 @@ function initCanvas()
 
 function clickHandler ( e)
 {
-  if(sceneManager.getScene() != "Game Screen")
+  console.log()
+  if(sceneManager.getScene() == "End Screen")
+  {
+    var temp = new MenuScene('Menu Screen');
+    sceneManager.setScene(temp);
+    sceneManager.goToScene("Menu Screen");
+  }
+  else if(sceneManager.getScene() != "Game Screen")
   {
     sceneManager.goToNextScene();	// Use a method on the sceneManager
+    if(sceneManager.getScene() === "Game Screen")
+    {
+      gameNS.game.restart();
+    }
   }
 }
 

@@ -36,12 +36,12 @@ function Game()
 
 Game.prototype.init = function()
 {
-    this.previousTime = Date.now();
 }
 
 Game.prototype.restart = function()
 {
-  this.timer = 60;
+  this.previousTime = Date.now();
+  this.timer = 2;
 }
 
 Game.prototype.update = function(sceneManager)
@@ -66,6 +66,11 @@ Game.prototype.update = function(sceneManager)
     }
   }
 
+  if (this.timer <= 0)
+  {
+    sceneManager.goToScene('End Screen');
+  }
+
 }
 
 Game.prototype.render = function()
@@ -75,7 +80,7 @@ Game.prototype.render = function()
   ctx.clearRect(0,0, canvas.width, canvas.height);
   ctx.font = '40pt Impact Regular';
   ctx.fillStyle = 'black';
-  ctx.fillText(Math.round(this.timer), 400, 70);
+  ctx.fillText("Time left: " + Math.round(this.timer), 200, 70);
 
   this.player.render();
 }

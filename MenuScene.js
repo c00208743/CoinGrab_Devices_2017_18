@@ -15,6 +15,7 @@ class MenuScene
 
    createDiv(divId)
   {
+    console.log("div1");
   	var div = document.createElement("div");
   	div.id = divId;
     div.innerHTML = '<img src=\'Play.png\'>';
@@ -24,7 +25,7 @@ class MenuScene
 
   createDiv2(divId2)
   {
-
+    console.log("div2");
   	var div2 = document.createElement("div");
     div2.innerHTML = '<img src=\'Quit.png\'>';
   	div2.id = divId2;
