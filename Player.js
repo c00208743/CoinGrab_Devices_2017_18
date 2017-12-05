@@ -19,7 +19,6 @@ class Player
   {
 
 
-
 	 this.x = x;
 	 this.y = y;
 	 this.width = width;
@@ -37,6 +36,10 @@ class Player
    this.gravity = 0.1 * this.mass;
    this.jumpForce = -5 * this.mass;
    this.jumping = false;
+
+   //document.addEventListener("touchstart", this.touchStart);
+   //document.addEventListener("touchmove", this.touchMove, {passive: false});
+   //document.addEventListener("touchend", this.touchEnd);
 
   }
 
@@ -83,11 +86,7 @@ class Player
 
   }
 
-  applyForceY(f)
-  {
-    f = f / this.mass;
-    this.accelY = this.accelY + f;
-  }
+
 
   /**
  * Function that gets the position where the screen was last being touched.
@@ -116,17 +115,22 @@ touchEnd(e)
 
     if(!this.jumping && aboveTime < timeTaken && belowTime > timeTaken && dist < maxDistance)
     {
-      this.applyForceY(this.jumpForce);
+      //this.applyForceY(this.jumpForce);
       this.jumping = true;
-      console.log("Swipe");
     }
+}
+
+applyForceY(f)
+{
+  f = f / this.mass;
+  this.accelY = this.accelY + f;
 }
 
 update()
 {
   if(this.touchX > this.x + (this.width / 2))
   {
-    // Move left
+    // Move lef
     this.x += 5;
   }
 

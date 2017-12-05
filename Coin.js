@@ -69,7 +69,7 @@ class Coin
      {
        this.y = -25;
        this.x = Math.floor(Math.random() * 450);
-       console.log(this.x);
+
      }
   }
 

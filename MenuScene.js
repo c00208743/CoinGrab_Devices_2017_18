@@ -18,7 +18,7 @@ class MenuScene
   	var div = document.createElement("div");
   	div.id = divId;
     div.innerHTML = '<img src=\'Play.png\'>';
-    div.addEventListener("touchstart", onTouchStart,false);
+    div.addEventListener("touchstart", onChangeScreen,false);
     document.body.appendChild(div);
   }
 
@@ -28,7 +28,7 @@ class MenuScene
   	var div2 = document.createElement("div");
     div2.innerHTML = '<img src=\'Quit.png\'>';
   	div2.id = divId2;
-  	div2.addEventListener("touchstart", onTouchStart,false);
+  	div2.addEventListener("touchstart", onChangeScreen,false);
     document.body.appendChild(div2);
 
   }
@@ -47,7 +47,6 @@ class MenuScene
     ctx.font = 'Impact Regular';
     ctx.fillText(this.title, 10, 50);
     document.body.style.backgroundColor = "#0000ff";
-
   }
 
 
