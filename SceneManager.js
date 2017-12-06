@@ -11,8 +11,9 @@ class SceneManager
     this.currentScene = null;
     this.index = -1;
     this.sceneNum = -1;
-  }
 
+
+  }
   /**
    * addScene increments the number of the current scene and pushes
    * the current scene title is pushed in the list and the scene
@@ -24,8 +25,8 @@ class SceneManager
     this.sceneNum++;
     this.sceneTitles.push(scene.title);
     this.scenes[this.sceneNum] = scene;
-  }
 
+  }
   /**
    * goToScene looks through this.sceneTitles  for the current title
    * then sets the index to the current title
@@ -41,8 +42,8 @@ class SceneManager
       }
     }
     this.currentScene = this.scenes[this.index];
-  }
 
+  }
   /**
    * goToNextScene increments the index to get the scene that suppose to
    * come next and sets the current scene to the scene after the current index
@@ -61,7 +62,6 @@ class SceneManager
       var el = document.getElementById('divId3');
       el.parentNode.removeChild(el);
     }
-
     if(this.index == 2)
     {
       //removes the button
@@ -69,7 +69,10 @@ class SceneManager
       el.parentNode.removeChild(el);
       var el = document.getElementById('divId2');
       el.parentNode.removeChild(el);
+
     }
+
+
 
     this.currentScene = this.scenes[this.index];
 
@@ -83,4 +86,5 @@ class SceneManager
   {
     return this.sceneTitles[this.index];
   }
+
 }
