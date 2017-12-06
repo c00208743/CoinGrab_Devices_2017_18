@@ -87,4 +87,14 @@ class SceneManager
     return this.sceneTitles[this.index];
   }
 
+  setScene(scene)
+  {
+    for (var i = 0; i < this.sceneTitles.length; i++)
+    {
+      if(scene.getScene === this.sceneTitles[i])
+      {
+        this.scenes[i].init();
+      }
+    }
+  }
 }

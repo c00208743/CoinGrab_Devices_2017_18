@@ -127,7 +127,12 @@ touchEnd(e)
       this.applyForceY(this.jumpForce);
       this.jumping = true;
     }
+}
 
+hitCoin()
+{
+  this.score++;
+  //console.log(this.score);
 }
 
 update()
